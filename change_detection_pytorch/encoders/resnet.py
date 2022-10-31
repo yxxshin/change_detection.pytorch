@@ -71,12 +71,15 @@ class ResNetEncoder(ResNet, EncoderMixin):
 
 
 new_settings = {
+    ## 22.10.31 Changed by yxxshin) to avoid CUDA <-> CPU mismatch problems
     "resnet18": {
-        "ssl": "https://dl.fbaipublicfiles.com/semiweaksupervision/model_files/semi_supervised_resnet18-d92f0530.pth",
+        # "ssl": "https://dl.fbaipublicfiles.com/semiweaksupervision/model_files/semi_supervised_resnet18-d92f0530.pth",
+        "ssl": "https://download.pytorch.org/models/resnet18-5c106cde.pth",
         "swsl": "https://dl.fbaipublicfiles.com/semiweaksupervision/model_files/semi_weakly_supervised_resnet18-118f1556.pth"
     },
     "resnet50": {
-        "ssl": "https://dl.fbaipublicfiles.com/semiweaksupervision/model_files/semi_supervised_resnet50-08389792.pth",
+        # "ssl": "https://dl.fbaipublicfiles.com/semiweaksupervision/model_files/semi_supervised_resnet50-08389792.pth",
+        "ssl": "https://download.pytorch.org/models/resnet50-19c8e357.pth",
         "swsl": "https://dl.fbaipublicfiles.com/semiweaksupervision/model_files/semi_weakly_supervised_resnet50-16a12f1b.pth"
     },
     "resnext50_32x4d": {
