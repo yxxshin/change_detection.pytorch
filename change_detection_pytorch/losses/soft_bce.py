@@ -56,6 +56,9 @@ class SoftBCEWithLogitsLoss(nn.Module):
         else:
             soft_targets = y_true
 
+        ## 2022.11.01. Changed by yxxshin)
+        y_true = y_true.squeeze()
+
         loss = F.binary_cross_entropy_with_logits(
             y_pred, soft_targets, self.weight, pos_weight=self.pos_weight, reduction="none"
         )
