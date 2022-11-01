@@ -52,6 +52,7 @@ class SoftBCEWithLogitsLoss(nn.Module):
         """
         ## 2022.11.01. Changed by yxxshin)
         y_true = y_true.unsqueeze(1)
+        y_true = y_true.float()
 
         if self.smooth_factor is not None:
             soft_targets = (1 - y_true) * self.smooth_factor + y_true * (1 - self.smooth_factor)
