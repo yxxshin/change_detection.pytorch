@@ -50,14 +50,13 @@ class SoftBCEWithLogitsLoss(nn.Module):
         Returns:
             loss: torch.Tensor
         """
+        ## 2022.11.01. Changed by yxxshin)
+        y_true = y_true.unsqueeze(1)
 
         if self.smooth_factor is not None:
             soft_targets = (1 - y_true) * self.smooth_factor + y_true * (1 - self.smooth_factor)
         else:
             soft_targets = y_true
-
-        ## 2022.11.01. Changed by yxxshin)
-        y_true = y_true.unsqueeze(1)
 
         loss = F.binary_cross_entropy_with_logits(
             y_pred, soft_targets, self.weight, pos_weight=self.pos_weight, reduction="none"
