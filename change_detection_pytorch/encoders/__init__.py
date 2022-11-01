@@ -82,13 +82,12 @@ def get_encoder(name, in_channels=3, depth=5, weights=None, output_stride=32, **
                 weights, name, list(encoders[name]["pretrained_settings"].keys()),
             ))
         ## 2022.10.31 Changed by yxxshin) 
-        encoder.load_state_dict(model_zoo.load_url(settings["url"], map_location=torch.device(DEVICE)))
+        encoder.load_state_dict(model_zoo.load_url(settings["url"]))
 
     encoder.set_in_channels(in_channels, pretrained=weights is not None)
     if output_stride != 32:
         encoder.make_dilated(output_stride)
     
-    encoder.to(DEVICE)
     return encoder
 
 
