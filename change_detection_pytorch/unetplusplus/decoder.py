@@ -125,7 +125,7 @@ class UnetPlusPlusDecoder(Decoder):
 
     def forward(self, *features):
 
-        features = self.aggregation_layer(features[0], features[1],
+        features = self.aggregation_layer(features[0], features[1], features[2], features[3],
                                           self.fusion_form, ignore_original_img=True)
         # features = features[1:]    # remove first skip with same spatial resolution
         features = features[::-1]  # reverse channels to start from head of encoder
